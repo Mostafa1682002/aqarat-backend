@@ -1,0 +1,487 @@
+@media (min-width: 1400px) {}
+
+@media (max-width: 1500px) {
+  .hero {
+    min-height: 480px;
+  }
+
+  .img-product-index {
+    height: 280px;
+  }
+
+  .img-categories-index {
+    height: 180px;
+  }
+
+  .element ul li a {
+    font-size: 18px;
+    color: var(--color-black);
+  }
+
+  .logo {
+    max-width: 124px;
+  }
+
+  .sub-categories-index h2 {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 1300px) {}
+
+@media (max-width: 1200px) {
+  .search-fliter {
+    width: 75%;
+  }
+
+  .img-aboutus-index {
+    margin: 30px 0;
+  }
+
+  .form-fliter-sales-page {
+    width: 100%;
+    margin: 20px 0;
+
+  }
+
+  .fliter-sales-page {
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+
+  .fliter-sales-page .input-form {
+    margin: 0px 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  .add-header {
+    display: none;
+  }
+
+  .main-form-aosh>h2 {
+    font-size: 18px;
+    margin: 20px 0 25px;
+  }
+
+  .bg-aosh-page {
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    overflow: hidden;
+    min-height: 100vh;
+    z-index: -1;
+  }
+
+  .form-aosh {
+    width: 70%;
+    height: auto;
+    max-height: 95vh;
+    border-radius: 25px;
+    margin: auto;
+    background: #fff;
+    overflow: auto;
+    padding: 40px 5%;
+  }
+
+  .btn-aosh .ctm-btn {
+    height: 45px;
+  }
+
+  .bg-aosh-page>img {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .input-form {
+    margin: 15px 0;
+    position: relative;
+  }
+
+  .form-aosh {
+    direction: ltr;
+    scrollbar-width: none;
+    scrollbar-color: inherit;
+  }
+
+  .form-aosh::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  .form-aosh::-webkit-scrollbar-thumb {
+    display: none;
+  }
+
+  .form-aosh::-webkit-scrollbar {
+    display: none;
+  }
+
+  .logo-aosh {
+    margin-bottom: 25px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .form-fliter-sales-page {
+    flex-wrap: wrap;
+  }
+
+  .btn-sales-page {
+    width: 100%;
+  }
+
+  .form-contactus {
+    margin: 60px auto;
+    width: 100%;
+  }
+
+  .user-owner {
+    margin: 20px 0;
+  }
+
+  .details-list ul li {
+    font-size: 17px;
+    gap: 20px;
+    width: calc(100% / 2 - 20px);
+  }
+
+  .text-product-details>h2 {
+    font-size: 19px;
+  }
+
+  .price-product-details {
+    font-size: 17px;
+    margin: 10px 0;
+  }
+
+  .users-chat {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    transition: 0.5s linear;
+    top: 0;
+    transform: translateX(110%);
+  }
+
+  .users-chat.active {
+    transform: translateX(0%);
+  }
+
+  .mune-chat {
+    display: block;
+  }
+
+  .img-users-chat {
+    width: 35px;
+    height: 35px;
+  }
+
+  .time-message h4 {
+    font-size: 14px;
+  }
+
+  .number-messsage {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  .text-users-chat p {
+    margin-top: 0px;
+  }
+
+  .text-users-chat {
+    padding-left: 12px;
+    width: 73%;
+  }
+
+  .main-users-chat ul li a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 15px 0;
+    position: relative;
+    flex-wrap: wrap;
+    border-top: 1px solid #eeeeee;
+  }
+
+  .users-chat {
+    max-width: 75%;
+  }
+
+  .search-chat input::placeholder {
+    font-size: 18px;
+    font-family: "font_bold";
+  }
+
+  .search-chat::after {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mune-chat {
+    display: block;
+    position: absolute;
+    top: 38px;
+    left: 38px;
+  }
+
+  .msg-receive p {
+    max-width: 80%;
+  }
+
+  .inputs-searh-fliter {
+    width: 100%;
+    gap: 0;
+  }
+
+  .main-search-fliter {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .inputs-searh-fliter {
+    flex-wrap: wrap;
+  }
+
+  .main-search-fliter .input-form {
+    margin: 3px 0;
+  }
+
+  .btn-search {
+    width: 100%;
+    margin-top: 9px;
+  }
+
+  .element {
+    display: none;
+  }
+
+  .btn-search button {
+    width: 100%;
+    height: 45px;
+  }
+
+  .popular-search {
+    flex-wrap: wrap;
+  }
+
+  .popular-search ul {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .logo {
+    max-width: 110px;
+  }
+
+  .logo-footer {
+    margin: 10px auto;
+    max-width: 180px;
+  }
+
+  .input-newsletter {
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .btn-icon-par {
+    display: none;
+  }
+
+  .menu-div {
+    position: relative;
+    display: block !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-aosh {
+    width: 95%;
+  }
+
+  .modify-data {
+    margin: 45px 0;
+  }
+
+  .links-proflie-page {
+    padding: 30px 0px;
+
+  }
+
+  h2 {
+    font-size: 16px;
+    line-height: 30px;
+    margin: 0;
+  }
+
+  .address-details h2 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  .details-list ul li span {
+    font-size: 17px;
+  }
+
+  .sub-img-product-details {
+    margin-bottom: 20px;
+    height: 250px;
+  }
+
+  .breadcrumb-header {
+
+    flex-wrap: wrap;
+  }
+
+  .search-fliter {
+    padding: 28px 20px;
+    width: 95%;
+  }
+
+  .popular-search h2 {
+    font-size: 17px;
+    margin: 0px 0px 12px;
+  }
+
+  .ctm-btn {
+    height: 45px;
+    font-size: 15px;
+    padding: 11px 20px;
+    min-width: 130px;
+  }
+
+  .mr-section {
+    margin: 40px 0;
+  }
+
+  .title-start h2,
+  .title-center h2 {
+    font-size: 17px;
+  }
+
+  .img-aboutus-index img {
+    height: 290px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .sub-categories-index h2 {
+    font-size: 16px;
+  }
+
+  .img-categories-index {
+    height: 140px;
+  }
+
+  .sub-categories-index {
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .sub-asked-questions h2 {
+    font-size: 13px;
+    padding-left: 35px;
+    line-height: 20px;
+  }
+
+  .img-product-index {
+    height: 250px;
+  }
+
+  .element-footer ul {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .element-footer ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .element-footer ul li a {
+    justify-content: center;
+  }
+
+  .popular-search ul li a {
+    padding: 7px 16px;
+    font-size: 13px;
+  }
+
+  .price-product {
+    font-size: 15px;
+  }
+
+  .text-product-index ul li img {
+    width: 27px !important;
+  }
+
+  .sub-asked-questions p {
+    font-size: 16px;
+  }
+
+  .img-aboutus-index::after {
+    width: 104px;
+    height: 143px;
+    bottom: -65px;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+
+  .img-product-index {
+    height: 183px;
+  }
+
+  .msg-send p {
+    max-width: 80%;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .text-title-chat h2 {
+    font-size: 15px;
+  }
+
+  .text-title-chat span {
+    font-size: 14px;
+  }
+
+  .register-providers {
+    width: 100%;
+    padding: 0px 5%;
+    box-shadow: none;
+    margin: 90px auto;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 568px) {
+  h2 {
+    font-size: 16px;
+  }
+
+  .register-providers {
+    width: 100%;
+    padding: 0px 5%;
+    box-shadow: none;
+    margin: 90px auto;
+    border-radius: 0;
+  }
+}

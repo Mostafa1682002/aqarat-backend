@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => 'profile', 'controller' => ProfileController::class], function () {
+    Route::get('/', 'index')->name('profile.index');
+    Route::post('/{id}', 'update')->name('profile.update');
+    Route::get('/password-change', 'passwordForm')->name('profile.passowrd.index');
+    Route::post('/password-change/{id}', 'password')->name('profile.passowrd.change');
+});
+Route::group(['prefix' => 'contacts', 'controller' => ContactController::class], function () {
+    Route::get('/', 'index')->name('contacts.index');
+    Route::post('/', 'store')->name('contacts.store');
+});

@@ -4,14 +4,12 @@ namespace App\Repositories;
 
 use App\Interfaces\BaseInterface;
 use App\Models\User;
-use App\Traits\UploadImage;
 
-class UserRepositoryInterface implements BaseInterface
+class ProfileFrontRepositoryInterface implements BaseInterface
 {
-    use UploadImage;
     public function index($request = null)
     {
-        return User::paginate(30);
+        return auth()->user();
     }
     public function show($id)
     {
@@ -28,16 +26,11 @@ class UserRepositoryInterface implements BaseInterface
     }
     public function update($request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = auth()->user();
         $user->update($request);
         return $user;
     }
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        if (!str_contains($user->image, 'user.png')) {
-            $this->deleteImage($user->image);
-        }
-        return $user->delete();
     }
 }
