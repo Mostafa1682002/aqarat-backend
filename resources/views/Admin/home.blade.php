@@ -185,7 +185,6 @@
                                                         <th>الهاتف</th>
                                                         <th> الصوره</th>
                                                         <th>الحالة</th>
-                                                        <th>العمليات</th>
                                                     </tr>
                                                 </thead>
                                                 @forelse($users as $user)
@@ -257,10 +256,12 @@
                                                 <thead>
                                                     <tr class="table-dark text-white">
                                                         <th>#</th>
-                                                        <th>رقم الطلب</th>
-                                                        <th>العميل</th>
+                                                        <th>اسم المستخدم</th>
                                                         <th>الهاتف</th>
-                                                        <th>الاجمالي</th>
+                                                        <th>اسم العقار</th>
+                                                        <th>السعر</th>
+                                                        <th>القسم</th>
+                                                        <th>الحالة</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
