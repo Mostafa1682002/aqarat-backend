@@ -59,4 +59,10 @@ class User extends Authenticatable
         'status' => Status::class,
         'badge' => Status::class,
     ];
+
+
+    public function advertisement()
+    {
+        return $this->hasMany(Advertisement::class);
+    }
 }

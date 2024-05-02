@@ -197,7 +197,7 @@
                                     </div>
                                     <div class="text-owner">
                                         <h2>{{ $advertisement->user->name }} </h2>
-                                        <p> تاريخ النشر : {{ date('Y/m/d', $advertisement->created_at) }}</p>
+                                        <p> تاريخ النشر : {{ date('Y/m/d', strtotime($advertisement->created_at)) }}</p>
                                     </div>
                                 </div>
                                 <ul>

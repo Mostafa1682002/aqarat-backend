@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdvertisementController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -31,3 +34,12 @@ Route::group(['prefix' => 'contacts', 'controller' => ContactController::class],
     Route::get('/', 'index')->name('contacts.index');
     Route::post('/', 'store')->name('contacts.store');
 });
+Route::group(['prefix' => 'advertisements', 'controller' => AdvertisementController::class], function () {
+    Route::get('/', 'index')->name('advertisements.index');
+    Route::get('/show/{id}', 'show')->name('advertisements.show');
+    Route::get('/create', 'create')->name('advertisements.create');
+    Route::post('/store', 'store')->name('advertisements.store');
+});
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/aboutus', [AboutController::class, 'index'])->name('aboutus.index');

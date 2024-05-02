@@ -1,3 +1,4 @@
+@inject('settings', 'App\Models\Setting')
 <!DOCTYPE html>
 <html lang="ar">
 
@@ -56,19 +57,19 @@
                     <div class="element">
                         <ul>
                             <li><a href="{{ route('home') }}"> الرئيسيه </a></li>
-                            <li><a href="aboutus.html"> نبذه عنا </a></li>
-                            <li><a href="categories.html">الاقسام </a></li>
-                            <li><a href="products.html"> العقارات </a></li>
+                            <li><a href="{{ route('aboutus.index') }}"> نبذه عنا </a></li>
+                            <li><a href="{{ route('categories.index') }}">الاقسام </a></li>
+                            <li><a href="{{ route('advertisements.index') }}"> العقارات </a></li>
                             <li><a href="{{ route('contacts.index') }}"> تواصل معنا </a></li>
                         </ul>
                     </div>
 
                     <div class="icon-top-par">
                         @auth('web')
-                            <a href="add-ads.html" class="ctm-btn add-header"> اضافة اعلان </a>
+                            <a href="{{ route('advertisements.create') }}" class="ctm-btn add-header"> اضافة اعلان </a>
                             <a href="{{ route('profile.index') }}" class="profile-header"> <i class="bi bi-person"></i>
                             </a>
-                            <a href="chat.html" class="chat-header"><i class="bi bi-chat-dots"></i> </a>
+                            <a href="#" class="chat-header"><i class="bi bi-chat-dots"></i> </a>
                         @else
                             <a href="{{ route('login') }}" class="ctm-btn btn-icon-par"> ابدأ الان </a>
                         @endauth
@@ -132,11 +133,11 @@
                         <div class="col-lg-6">
                             <div class="element-footer">
                                 <ul>
-                                    <li><a href="index.html"> الرئيسيه </a></li>
-                                    <li><a href="aboutus.html"> نبذه عنا </a></li>
-                                    <li><a href="categories.html">الاقسام </a></li>
-                                    <li><a href="products.html"> العقارات </a></li>
-                                    <li><a href="contactus.html"> تواصل معنا </a></li>
+                                    <li><a href="{{ route('home') }}"> الرئيسيه </a></li>
+                                    <li><a href="{{ route('aboutus.index') }}"> نبذه عنا </a></li>
+                                    <li><a href="{{ route('categories.index') }}">الاقسام </a></li>
+                                    <li><a href="{{ route('advertisements.index') }}"> العقارات </a></li>
+                                    <li><a href="{{ route('contacts.index') }}"> تواصل معنا </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -145,10 +146,14 @@
                         <div class="col-lg-3">
                             <div class="media-footer">
                                 <ul>
-                                    <li><a href=""> <i class="fab fa-facebook-f"></i> </a></li>
-                                    <li><a href=""> <i class="fab fa-instagram"></i> </a></li>
-                                    <li><a href=""> <i class="fab fa-twitter"></i> </a></li>
-                                    <li><a href=""> <i class="fab fa-snapchat-ghost"></i> </a></li>
+                                    <li><a href="{{ $settings->first()->f_link }}"> <i class="fab fa-facebook-f"></i>
+                                        </a></li>
+                                    <li><a href="{{ $settings->first()->i_link }}"> <i class="fab fa-instagram"></i>
+                                        </a></li>
+                                    <li><a href="{{ $settings->first()->t_link }}"> <i class="fab fa-twitter"></i>
+                                        </a></li>
+                                    <li><a href="{{ $settings->first()->s_link }}"> <i
+                                                class="fab fa-snapchat-ghost"></i> </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -168,9 +173,9 @@
             <div class="element_menu_responsive">
                 <ul>
                     <li><a href="{{ route('home') }}"> الرئيسيه </a></li>
-                    <li><a href="aboutus.html"> نبذه عنا </a></li>
-                    <li><a href="categories.html">الاقسام </a></li>
-                    <li><a href="products.html"> العقارات </a></li>
+                    <li><a href="{{ route('aboutus.index') }}"> نبذه عنا </a></li>
+                    <li><a href="{{ route('categories.index') }}">الاقسام </a></li>
+                    <li><a href="{{ route('advertisements.index') }}"> العقارات </a></li>
                     <li><a href="{{ route('contacts.index') }}"> تواصل معنا </a></li>
                 </ul>
             </div>
@@ -178,7 +183,7 @@
 
             <div class="btns_menu_responsive">
                 @auth
-                    <a href="add-ads.html" class="ctm-btn w-100"> اضافة اعلان </a>
+                    <a href="{{ route('advertisements.create') }}" class="ctm-btn w-100"> اضافة اعلان </a>
                 @else
                     <a href="{{ route('login') }}" class="ctm-btn w-100"> ابدأ الان </a>
                 @endauth

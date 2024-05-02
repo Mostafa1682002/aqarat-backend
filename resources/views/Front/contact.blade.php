@@ -8,11 +8,6 @@
 @endsection
 @section('content')
     <main id="app">
-
-
-
-
-
         <section class="contactus mr-section">
             <div class="main-container">
                 <div class="title-center">
