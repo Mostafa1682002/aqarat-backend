@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 interface BaseInterface
 {
-    public function index($request = null);
+    public function index($request);
     public function show($id);
     public function create();
     public function store($request);

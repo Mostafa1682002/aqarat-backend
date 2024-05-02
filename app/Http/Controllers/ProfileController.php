@@ -70,4 +70,12 @@ class ProfileController extends Controller
             return redirect()->back()->with('error', 'كلمة المرور غير صحيحه');
         }
     }
+
+    public function advertisements()
+    {
+        $advertisements = auth()->user()->advertisements;
+        // return $advertisements;
+        $profile = $this->profileRepository->index();
+        return view('Front.auth.my-advertisements', compact('advertisements', 'profile'));
+    }
 }

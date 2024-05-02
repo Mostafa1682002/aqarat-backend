@@ -9,9 +9,32 @@ use App\Traits\UploadImage;
 
 class AdvertisementFrontRepositoryInterface implements BaseInterface
 {
-    public function index($request = null)
+    public function index($request)
     {
-        return Advertisement::latest()->paginate(20);
+        $advertisements = Advertisement::orWhere(function ($query) use ($request) {
+            if ($request->has('address')) {
+                $query->where('address', 'like', '%' . $request->address . '%');
+            }
+        })->orWhere(function ($query) use ($request) {
+            if ($request->has('name')) {
+                $query->where('name', 'like', '%' . $request->name . '%');
+            }
+        })
+            ->orWhere(function ($query) use ($request) {
+                if ($request->has('category_id')) {
+                    $query->where('category_id', $request->category_id);
+                }
+            })->orWhere(function ($query) use ($request) {
+                if ($request->has('type')) {
+                    $query->where('type', $request->type);
+                }
+            })->orWhere(function ($query) use ($request) {
+                if ($request->has('price')) {
+                    $query->where('price', $request->price);
+                }
+            })->paginate(30);
+        $categories = Category::all();
+        return ['categories' => $categories, 'advertisements' => $advertisements];
     }
     public function show($id)
     {

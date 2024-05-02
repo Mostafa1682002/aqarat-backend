@@ -29,7 +29,8 @@
                                             class="bi bi-chevron-double-left"></i></a></li>
                                 <li><a href="{{ route('profile.passowrd.index') }}" class="active"> تعديل كلمة المرور <i
                                             class="bi bi-chevron-double-left"></i></a></li>
-                                <li><a href="ads-profile.html"> اعلاناتي <i class="bi bi-chevron-double-left"></i></a></li>
+                                <li><a href="{{ route('profile.advertisements') }}"> اعلاناتي <i
+                                            class="bi bi-chevron-double-left"></i></a></li>
                                 <form action="{{ route('logout') }}" method="post" id="logout">
                                     @csrf
                                 </form>

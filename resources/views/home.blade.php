@@ -3,33 +3,30 @@
     <main id="app">
         <section class="hero" style="background-image: url({{ asset('assets/front/images/img-header.png') }});">
             <div class="search-fliter">
-                <form action="" class="w-100 d-block text-center">
+                <form action="{{ route('advertisements.index') }}" method="get" class="w-100 d-block text-center">
                     <div class="main-search-fliter">
                         <div class="inputs-searh-fliter">
                             <div class="input-form">
-                                <input type="text" placeholder="ابحث عن عقار" class="form-control" name="search">
+                                <input type="text" placeholder="ابحث عن عقار" class="form-control" name="name">
                             </div>
                             <div class="input-form arrow-select">
-                                <select class="form-select form-control " name="region">
-                                    <option value="المنطقة">المنطقة</option>
-                                    <option value="الرياض ">الرياض </option>
-                                    <option value="الدمام"> الدمام </option>
+                                <select class="form-select form-control " name="type">
+                                    <option value="للايجار">للايجار</option>
+                                    <option value="للبيع">للبيع</option>
                                 </select>
                             </div>
                             <div class="input-form arrow-select">
-                                <select class="form-select form-control " name="rooms">
-                                    <option value="الغرف">الغرف</option>
-                                    <option value="1 ">1 </option>
-                                    <option value="2"> 2 </option>
-                                    <option value="3"> 3 </option>
-                                    <option value="4"> 4 </option>
+                                <select class="form-select form-control " name="cayegory_id">
+                                    <option selected disabled> اسم القسم </option>
+                                    @foreach ($categories as $category)
+                                        <option value=" {{ $category->id }} "> {{ $category->name }} </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="btn-search">
-                            <button><i class="bi bi-search"></i></button>
+                            <button type="submit"><i class="bi bi-search"></i></button>
                         </div>
-
                     </div>
 
                     <div class="popular-search">
@@ -89,56 +86,20 @@
                     <h2>الاقسام </h2>
                 </div>
                 <div class="owl-carousel owl-theme maincarousel" id="slider-categories">
-                    <div class="item">
-                        <a href="">
-                            <div class="sub-categories-index">
-                                <div class="img-categories-index">
-                                    <img src="{{ asset('assets/front/images/ca1.png') }}" alt="">
+                    @forelse ($categories as $category)
+                        <div class="item">
+                            <a href="#">
+                                <div class="sub-categories-index">
+                                    <div class="img-categories-index">
+                                        <img src="{{ $category->image }}" alt="">
+                                    </div>
+                                    <h2>{{ $category->name }}</h2>
                                 </div>
-                                <h2> منازل</h2>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="">
-                            <div class="sub-categories-index">
-                                <div class="img-categories-index">
-                                    <img src="{{ asset('assets/front/images/ca1.png') }}" alt="">
-                                </div>
-                                <h2> منازل</h2>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="">
-                            <div class="sub-categories-index">
-                                <div class="img-categories-index">
-                                    <img src="{{ asset('assets/front/images/ca1.png') }}" alt="">
-                                </div>
-                                <h2> منازل</h2>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="">
-                            <div class="sub-categories-index">
-                                <div class="img-categories-index">
-                                    <img src="{{ asset('assets/front/images/ca1.png') }}" alt="">
-                                </div>
-                                <h2> منازل</h2>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="">
-                            <div class="sub-categories-index">
-                                <div class="img-categories-index">
-                                    <img src="{{ asset('assets/front/images/ca1.png') }}" alt="">
-                                </div>
-                                <h2> منازل</h2>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @empty
+                        <p class="col-12" style="text-align: center;font-size:25px">لايوجد بيانات </p>
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -225,31 +186,39 @@
                             </div>
                         </a>
                     </div>
-                    <div class="item">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="{{ asset('assets/front/images/p1.jpg') }}" alt="">
+                    @forelse ($advertisements as $advertisement)
+                        <div class="item">
+                            <a href="{{ route('advertisements.show', $advertisement->id) }}">
+                                <div class="sub-product-index">
+                                    <div class="img-product-index">
+                                        <img src="{{ $advertisement->image }}" alt="">
+                                    </div>
+                                    <div class="text-product-index">
+                                        <h2> {{ $advertisement->name }}</h2>
+                                        <h3> <i class="bi bi-geo-alt"></i> {{ $advertisement->address }} </h3>
+                                        <div class="price-product"> {{ $advertisement->price }} ريال
+                                            {{-- <span class="old-price">480000 ريال</span> --}}
+                                        </div>
+                                        <p>{{ substr($advertisement->description, 0, 120) }} </p>
+                                        <ul>
+                                            <li>{{ $advertisement->number_kitchens }}<img
+                                                    src="{{ asset('assets/front/images/toilet.png') }}" alt="">
+                                            </li>
+                                            <li>{{ $advertisement->number_halls }}<img
+                                                    src="{{ asset('assets/front/images/couch.png') }}" alt="">
+                                            </li>
+                                            <li>{{ $advertisement->number_rooms }}<img
+                                                    src="{{ asset('assets/front/images/single-bed.png') }}"
+                                                    alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="{{ asset('assets/front/images/toilet.png') }}" alt="">
-                                        </li>
-                                        <li>2<img src="{{ asset('assets/front/images/couch.png') }}" alt="">
-                                        </li>
-                                        <li>3<img src="{{ asset('assets/front/images/single-bed.png') }}" alt="">
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @empty
+                        <p class="col-12" style="text-align: center;font-size:25px">لايوجد بيانات </p>
+                    @endforelse
                 </div>
 
             </div>

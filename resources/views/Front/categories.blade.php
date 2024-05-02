@@ -16,7 +16,7 @@
                 <div class="row mt-5 row-gap">
                     @forelse ($categories as $category)
                         <div class="col-lg-3 col-md-4 col-sm-6">
-                            <a href="sub-categories.html">
+                            <a href="{{ route('advertisements.index') }}?category_id={{ $category->id }}">
                                 <div class="sub-categories-index">
                                     <div class="img-categories-index">
                                         <img src="{{ $category->image }}" alt="">

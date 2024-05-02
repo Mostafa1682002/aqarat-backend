@@ -15,10 +15,12 @@ class AdvertisementController extends Controller
         $this->advertisementRepository = $advertisement;
         $this->middleware('auth')->except('index');
     }
-    public function index()
+    public function index(Request $request)
     {
-        $advertisements = $this->advertisementRepository->index();
-        return view('Front.advertisements', compact('advertisements'));
+        $data = $this->advertisementRepository->index($request);
+        $advertisements = $data['advertisements'];
+        $categories = $data['categories'];
+        return view('Front.advertisements', compact('advertisements', 'categories'));
     }
     public function show($id)
     {

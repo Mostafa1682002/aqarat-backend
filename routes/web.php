@@ -27,6 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'profile', 'controller' => ProfileController::class], function () {
     Route::get('/', 'index')->name('profile.index');
     Route::post('/{id}', 'update')->name('profile.update');
+    Route::get('/advertisements', 'advertisements')->name('profile.advertisements');
     Route::get('/password-change', 'passwordForm')->name('profile.passowrd.index');
     Route::post('/password-change/{id}', 'password')->name('profile.passowrd.change');
 });

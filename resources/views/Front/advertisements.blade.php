@@ -11,48 +11,38 @@
         <section class="product-fliter mr-section">
             <div class="main-container">
                 <div class="fliter-sales-page mt-3">
-                    <div class="form-fliter-sales-page">
+                    <form class="form-fliter-sales-page" action="{{ route('advertisements.index') }}" method="get">
                         <div class="input-form">
                             <div class="input-form">
                                 <input type="text" class="form-control" placeholder="أبحث عن محافظة, مدينة"
-                                    name="search">
+                                    name="address">
                             </div>
                         </div>
                         <div class="input-form arrow-select">
-                            <select class="form-select form-control " name="">
+                            <select class="form-select form-control " name="type">
                                 <option value="للايجار">للايجار</option>
-                                <option value="لبيع">لبيع</option>
-                                <option value="قريباً"> قريباً</option>
+                                <option value="للبيع">للبيع</option>
                             </select>
                         </div>
                         <div class="input-form arrow-select">
-                            <select class="form-select form-control " name="">
-                                <option value="موقع العقار">موقع العقار</option>
-                                <option value="الرياض"> الرياض</option>
-                                <option value="الرياض"> الرياض</option>
-                            </select>
-                        </div>
-                        <div class="input-form arrow-select">
-                            <select class="form-select form-control " name="">
-                                <option value="اسم القسم "> اسم القسم </option>
-                                <option value="منازل"> منازل </option>
-                                <option value="شقق"> فلل </option>
-                                <option value="شقق"> شقق </option>
+                            <select class="form-select form-control " name="cayegory_id">
+                                <option selected disabled> اسم القسم </option>
+                                @foreach ($categories as $category)
+                                    <option value=" {{ $category->id }} "> {{ $category->name }} </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="input-form">
                             <div class="input-form">
-                                <input type="number" class="form-control" placeholder="السعر" name="price">
+                                <input type="number" step="any" class="form-control" placeholder="السعر"
+                                    name="price">
                             </div>
                         </div>
-
-                    </div>
-                    <div class="btn-sales-page">
-                        <button class="ctm-btn w-100"> بحث </button>
-                    </div>
-
+                        <div class="btn-sales-page">
+                            <button type="submit" class="ctm-btn w-100"> بحث </button>
+                        </div>
+                    </form>
                 </div>
-
                 <div class="row">
                     @forelse ($advertisements as $advertisement)
                         <div class="col-lg-4 col-md-6">
@@ -86,117 +76,6 @@
                     @empty
                         <p class="col-12" style="text-align: center;font-size:25px">لايوجد بيانات </p>
                     @endforelse
-
-                    {{-- <div class="col-lg-4 col-md-6">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="images/p1.jpg" alt="">
-                                </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="images/toilet.png" alt=""> </li>
-                                        <li>2<img src="images/couch.png" alt=""> </li>
-                                        <li>3<img src="images/single-bed.png" alt=""> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="images/p1.jpg" alt="">
-                                </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="images/toilet.png" alt=""> </li>
-                                        <li>2<img src="images/couch.png" alt=""> </li>
-                                        <li>3<img src="images/single-bed.png" alt=""> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="images/p1.jpg" alt="">
-                                </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="images/toilet.png" alt=""> </li>
-                                        <li>2<img src="images/couch.png" alt=""> </li>
-                                        <li>3<img src="images/single-bed.png" alt=""> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="images/p1.jpg" alt="">
-                                </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="images/toilet.png" alt=""> </li>
-                                        <li>2<img src="images/couch.png" alt=""> </li>
-                                        <li>3<img src="images/single-bed.png" alt=""> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="images/p1.jpg" alt="">
-                                </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="images/toilet.png" alt=""> </li>
-                                        <li>2<img src="images/couch.png" alt=""> </li>
-                                        <li>3<img src="images/single-bed.png" alt=""> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div> --}}
                 </div>
 
             </div>

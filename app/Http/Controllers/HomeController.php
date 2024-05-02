@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $advertisements = Advertisement::latest()->paginate(10);
+        $categories = Category::latest()->paginate(10);
+        return view('home', compact('advertisements', 'categories'));
     }
 }
