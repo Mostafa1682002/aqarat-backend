@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2024 at 05:56 PM
+-- Generation Time: May 03, 2024 at 02:24 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', NULL, '$2y$10$8RUha/zoo2POCdDagnnxa.uqZ7BEHxLHFhvR2hCzRDuvZFdekD.0C', NULL, '2024-04-28 11:00:23', '2024-04-28 11:00:23');
+(1, 'Admin', 'admin@gmail.com', NULL, '$2y$10$BdgyP8YpQ.sIsH2S9fgFduQHbpr3kOI.EpFmzo.qRCDhXxCkboIIe', NULL, '2024-05-03 09:18:26', '2024-05-03 09:18:26');
 
 -- --------------------------------------------------------
 
@@ -73,13 +73,6 @@ CREATE TABLE `advertisements` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `advertisements`
---
-
-INSERT INTO `advertisements` (`id`, `user_id`, `name`, `price`, `phone`, `address`, `category_id`, `number_rooms`, `number_floors`, `number_kitchens`, `number_halls`, `elevator`, `furnished`, `type`, `image`, `status`, `description`, `created_at`, `updated_at`) VALUES
-(2, 2, 'مصطفي حسام رزق', '1000.00', '01064564850', 'Mostafa Hossam Rizk', 1, 7, 8, 10, 10, 1, 0, 'للبيع', 'uploads/advertisements/56632cf971e741Screenshot 2023-11-29 190645.png', 1, '1231', '2024-05-01 20:26:15', '2024-05-01 20:26:15');
-
 -- --------------------------------------------------------
 
 --
@@ -99,9 +92,40 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'منازل', 'uploads/categories/cat-1.png', '2024-04-28 11:00:48', '2024-04-28 11:00:48'),
-(2, 'عمائر', 'uploads/categories/cat-1.png', '2024-05-02 11:15:12', '2024-05-02 11:15:12'),
-(3, 'شقه', 'uploads/categories/cat-2.png', '2024-05-02 11:15:12', '2024-05-02 11:15:12');
+(1, 'عمائر', 'uploads/categories/cat-1.png', '2024-05-03 09:18:26', '2024-05-03 09:18:26'),
+(2, 'شقه', 'uploads/categories/cat-2.png', '2024-05-03 09:18:26', '2024-05-03 09:18:26'),
+(3, 'منازل', 'uploads/categories/cat-3.png', '2024-05-03 09:18:26', '2024-05-03 09:18:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_favorites`
+--
+
+CREATE TABLE `ch_favorites` (
+  `id` char(36) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `favorite_id` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_messages`
+--
+
+CREATE TABLE `ch_messages` (
+  `id` char(36) NOT NULL,
+  `from_id` bigint(20) NOT NULL,
+  `to_id` bigint(20) NOT NULL,
+  `body` varchar(5000) DEFAULT NULL,
+  `attachment` varchar(255) DEFAULT NULL,
+  `seen` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -118,13 +142,6 @@ CREATE TABLE `contacts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `contacts`
---
-
-INSERT INTO `contacts` (`id`, `name`, `email`, `object`, `message`, `created_at`, `updated_at`) VALUES
-(1, 'مصطفي حسام رزق', 'ma9856603@gmail.com', '12313', '777777777777777777777777777', '2024-05-01 09:35:35', '2024-05-01 09:35:35');
 
 -- --------------------------------------------------------
 
@@ -168,7 +185,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2024_04_24_235058_create_advertisements_table', 1),
 (8, '2024_04_25_000317_create_admins_table', 1),
 (9, '2024_04_25_001132_create_contacts_table', 1),
-(10, '2024_04_28_132113_create_settings_table', 1);
+(10, '2024_04_28_132113_create_settings_table', 1),
+(11, '2024_05_03_999999_add_active_status_to_users', 1),
+(12, '2024_05_03_999999_add_avatar_to_users', 1),
+(13, '2024_05_03_999999_add_dark_mode_to_users', 1),
+(14, '2024_05_03_999999_add_messenger_color_to_users', 1),
+(15, '2024_05_03_999999_create_chatify_favorites_table', 1),
+(16, '2024_05_03_999999_create_chatify_messages_table', 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +244,7 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `settings` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `logo` varchar(255) NOT NULL DEFAULT 'logo.png',
+  `logo` varchar(255) NOT NULL DEFAULT 'uploads/logo.png',
   `first_about_us` longtext NOT NULL,
   `second_about_us` longtext NOT NULL,
   `f_link` varchar(255) DEFAULT NULL,
@@ -237,7 +260,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `logo`, `first_about_us`, `second_about_us`, `f_link`, `t_link`, `s_link`, `i_link`, `created_at`, `updated_at`) VALUES
-(1, 'uploads/logo.png', 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع. ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق. هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.', 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع. ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.', NULL, NULL, 'https://stackoverflow.com/questions/58705546/how-to-validate-url-in-laravel-using-validation-rule', NULL, '2024-04-30 08:47:55', '2024-04-30 09:18:27');
+(1, 'logo.png', 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع. ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق. هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً.', 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع. ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.', NULL, NULL, NULL, NULL, '2024-05-03 09:18:26', '2024-05-03 09:18:26');
 
 -- --------------------------------------------------------
 
@@ -250,21 +273,25 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
+  `image` varchar(255) NOT NULL DEFAULT 'uploads/user.png',
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `active_status` tinyint(1) NOT NULL DEFAULT 0,
+  `avatar` varchar(255) NOT NULL DEFAULT 'avatar.png',
+  `dark_mode` tinyint(1) NOT NULL DEFAULT 0,
+  `messenger_color` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `phone`, `image`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'مصطفي حسام رزق', 'user@gmail.com', '01064564850', 'uploads/users/5663130614977epexels-photo-1933239.jpeg', NULL, '$2y$10$tdD28bRXpzZLF9UIcjEQ5.qhOoI7PuIszrliXyds27VItJZyS7A2S', 1, 'm3TEgHDwb3MyhW5Ys13kYCxpMG1J89jlWIGSgtyKYWf03EG178iSjtOHUzYK', '2024-04-30 12:41:24', '2024-05-01 19:38:12');
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `image`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`, `active_status`, `avatar`, `dark_mode`, `messenger_color`) VALUES
+(1, 'مصطفي حسام', 'user@gmail.com', '01064564850', 'uploads/user.png', NULL, '$2y$10$ZRr.A.Z7pQb7VX3lizFjh.fweRiwKNr0hAFThzjzah/TlN19IRt56', 1, NULL, '2024-05-03 09:18:26', '2024-05-03 09:18:26', 0, 'avatar.png', 0, NULL);
 
 --
 -- Indexes for dumped tables
@@ -283,12 +310,25 @@ ALTER TABLE `admins`
 ALTER TABLE `advertisements`
   ADD PRIMARY KEY (`id`),
   ADD KEY `advertisements_user_id_foreign` (`user_id`),
-  ADD KEY `advertisements_categorie_id_foreign` (`category_id`);
+  ADD KEY `advertisements_category_id_foreign` (`category_id`);
 
 --
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `categories_name_unique` (`name`);
+
+--
+-- Indexes for table `ch_favorites`
+--
+ALTER TABLE `ch_favorites`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_messages`
+--
+ALTER TABLE `ch_messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -358,19 +398,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `advertisements`
 --
 ALTER TABLE `advertisements`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -382,7 +422,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -400,7 +440,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -410,7 +450,7 @@ ALTER TABLE `users`
 -- Constraints for table `advertisements`
 --
 ALTER TABLE `advertisements`
-  ADD CONSTRAINT `advertisements_categorie_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `advertisements_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `advertisements_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
