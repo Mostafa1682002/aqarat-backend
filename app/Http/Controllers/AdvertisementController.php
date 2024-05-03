@@ -13,7 +13,7 @@ class AdvertisementController extends Controller
     public function __construct(AdvertisementFrontRepositoryInterface $advertisement)
     {
         $this->advertisementRepository = $advertisement;
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('index', 'show');
     }
     public function index(Request $request)
     {

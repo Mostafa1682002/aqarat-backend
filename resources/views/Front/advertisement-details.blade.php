@@ -70,12 +70,13 @@
                                     <p> تاريخ النشر : {{ date('Y/m/d', strtotime($advertisement->created_at)) }}</p>
                                 </div>
                             </div>
-
                             <ul>
                                 <li> <a href="https://wa.me/{{ $advertisement->phone }}" class="user-whatsapp"> تواصل عبر
                                         الواتس اب</a></li>
-                                <li> <a href="" class="user-chat"> راسل صاحب العقار </a></li>
-                                <li> <a href="" class="user-profile"> جميع إعلانات البائع </a></li>
+                                <li> <a href="/chatify/{{ $advertisement->user->id }}" class="user-chat"> راسل صاحب العقار
+                                    </a></li>
+                                <li> <a href="{{ route('advertisements.index') }}?user_id={{ $advertisement->user->id }}"
+                                        class="user-profile"> جميع إعلانات البائع </a></li>
                             </ul>
                         </div>
                     </div>

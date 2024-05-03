@@ -104,88 +104,12 @@
             </div>
         </section>
         <!-- end categories-index -->
-
         <section class="product-index mr-section">
             <div class="main-container">
                 <div class="title-center">
                     <h2>العقارات الموصى بها في السعودية </h2>
                 </div>
                 <div class="owl-carousel owl-theme maincarousel mt-5" id="slider-product">
-                    <div class="item">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="{{ asset('assets/front/images/p1.jpg') }}" alt="">
-                                </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="{{ asset('assets/front/images/toilet.png') }}" alt="">
-                                        </li>
-                                        <li>2<img src="{{ asset('assets/front/images/couch.png') }}" alt="">
-                                        </li>
-                                        <li>3<img src="{{ asset('assets/front/images/single-bed.png') }}" alt="">
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="{{ asset('assets/front/images/p1.jpg') }}" alt="">
-                                </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="{{ asset('assets/front/images/toilet.png') }}" alt="">
-                                        </li>
-                                        <li>2<img src="{{ asset('assets/front/images/couch.png') }}" alt="">
-                                        </li>
-                                        <li>3<img src="{{ asset('assets/front/images/single-bed.png') }}" alt="">
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="product-details.html">
-                            <div class="sub-product-index">
-                                <div class="img-product-index">
-                                    <img src="{{ asset('assets/front/images/p1.jpg') }}" alt="">
-                                </div>
-                                <div class="text-product-index">
-                                    <h2>عمارة مجددة بالكامل للبيع </h2>
-                                    <h3> <i class="bi bi-geo-alt"></i> الطائف , السعوديه </h3>
-                                    <div class="price-product"> 500000 ريال <span class="old-price">480000
-                                            ريال</span></div>
-                                    <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                        مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص </p>
-                                    <ul>
-                                        <li>3<img src="{{ asset('assets/front/images/toilet.png') }}" alt="">
-                                        </li>
-                                        <li>2<img src="{{ asset('assets/front/images/couch.png') }}" alt="">
-                                        </li>
-                                        <li>3<img src="{{ asset('assets/front/images/single-bed.png') }}" alt="">
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                     @forelse ($advertisements as $advertisement)
                         <div class="item">
                             <a href="{{ route('advertisements.show', $advertisement->id) }}">
@@ -208,8 +132,7 @@
                                                     src="{{ asset('assets/front/images/couch.png') }}" alt="">
                                             </li>
                                             <li>{{ $advertisement->number_rooms }}<img
-                                                    src="{{ asset('assets/front/images/single-bed.png') }}"
-                                                    alt="">
+                                                    src="{{ asset('assets/front/images/single-bed.png') }}" alt="">
                                             </li>
                                         </ul>
                                     </div>
@@ -220,7 +143,6 @@
                         <p class="col-12" style="text-align: center;font-size:25px">لايوجد بيانات </p>
                     @endforelse
                 </div>
-
             </div>
         </section>
 
@@ -230,14 +152,12 @@
                 <div class="title-center">
                     <h2>الاسئلة الشائعة</h2>
                 </div>
-
                 <div class="main-faq-index mt-10">
                     <div class="sub-asked-questions">
                         <h2>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة .. </h2>
                         <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص
                             العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد
                             الحروف التى يولدها التطبيق.
-
                         </p>
                         <div class="puls-que"></div>
                     </div>
@@ -246,7 +166,6 @@
                         <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص
                             العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد
                             الحروف التى يولدها التطبيق.
-
                         </p>
                         <div class="puls-que"></div>
                     </div>
@@ -255,7 +174,6 @@
                         <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص
                             العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد
                             الحروف التى يولدها التطبيق.
-
                         </p>
                         <div class="puls-que"></div>
                     </div>
@@ -264,7 +182,6 @@
                         <p>هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص
                             العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد
                             الحروف التى يولدها التطبيق.
-
                         </p>
                         <div class="puls-que"></div>
                     </div>

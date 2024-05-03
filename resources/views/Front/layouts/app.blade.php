@@ -69,7 +69,7 @@
                             <a href="{{ route('advertisements.create') }}" class="ctm-btn add-header"> اضافة اعلان </a>
                             <a href="{{ route('profile.index') }}" class="profile-header"> <i class="bi bi-person"></i>
                             </a>
-                            <a href="#" class="chat-header"><i class="bi bi-chat-dots"></i> </a>
+                            <a href="/chatify" class="chat-header"><i class="bi bi-chat-dots"></i> </a>
                         @else
                             <a href="{{ route('login') }}" class="ctm-btn btn-icon-par"> ابدأ الان </a>
                         @endauth
